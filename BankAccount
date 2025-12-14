@@ -1,0 +1,72 @@
+class BankAccount {
+
+    private String accountNumber;
+    private String accountHolderName;
+    private double balance;
+
+ 
+    public BankAccount(String accNumber, String holderName, double initialBalance) {
+        accountNumber = accNumber;
+        accountHolderName = holderName;
+
+        if (initialBalance >= 0) {
+            balance = initialBalance;
+        } else {
+            System.out.println("Initial balance cannot be negative. Balance set to 0.");
+            balance = 0;
+        }
+    }
+
+    
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public String getAccountHolderName() {
+        return accountHolderName;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+   
+    public void setBalance(double newBalance) {
+        if (newBalance >= 0) {
+            balance = newBalance;
+        } else {
+            System.out.println("Balance update failed: balance cannot be negative.");
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+      
+        BankAccount account1 = new BankAccount("BA101", "Rahim", 5000);
+        BankAccount account2 = new BankAccount("BA102", "Karim", 8000);
+        BankAccount account3 = new BankAccount("BA103", "Salma", 12000);
+
+       
+        account1.setBalance(6000);
+        account2.setBalance(-3000); 
+        account3.setBalance(15000);
+
+       
+        System.out.println("===== Bank Account Details =====");
+
+        printAccount(account1);
+        printAccount(account2);
+        printAccount(account3);
+
+        
+    }
+
+    static void printAccount(BankAccount acc) {
+        System.out.println("Account Number : " + acc.getAccountNumber());
+        System.out.println("Account Holder : " + acc.getAccountHolderName());
+        System.out.println("Balance        : " + acc.getBalance());
+        System.out.println();
+    }
+}
